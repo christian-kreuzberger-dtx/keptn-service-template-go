@@ -1,0 +1,23 @@
+name: Initialize Repo with nice things
+on:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'choose repo name'
+        required: true
+        type: 'string'
+jobs:
+  init-job:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: debug
+        run: |
+          echo ${{ github.event.inputs.repository }}
+      
+      - name: My init thingy
+        uses: ./.github/actions/init-thingy
+        with:
+          repository: ${{ github.event.inputs.repository }}

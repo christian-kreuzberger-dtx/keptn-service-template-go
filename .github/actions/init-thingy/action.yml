@@ -1,0 +1,11 @@
+name: 'init-thingy'
+description: 'RUn init thingy'
+inputs:
+  repository:
+    default: "<empty>"
+runs:
+  using: "composite"
+  steps: 
+    - name: Test
+      shell: bash
+      run: echo ${{ inputs.repository }}
